@@ -149,6 +149,21 @@ public class TestController {
         return jo;
     }
 
+    //test-git
+    @GetMapping("/ban1")
+    @ApiOperation("ban1")
+    public JSONObject ban1(String userId) throws ContractException {
+        //查询合约对象
+        byte[] queryAResultBefore = contract.evaluateTransaction("getUser",userId);
+        String convent= new String(queryAResultBefore, StandardCharsets.UTF_8);
+        // JSONObject jo = JSONObject.parseObject(convent);
+        //JSONObject joo = stringToJson(convent);
+        JSONObject jo = JSONObject.parseObject(convent);
+        // List<String> request = new ArrayList<>();
+        // return new Deployment(jo.getString("userId"),jo.getString("name"),jo.getString("money"),jo.getString("hashCode"),jo.getString("description"),jo.getObject("requestId",request));
+        return jo;
+    }
+
     //令牌转移
     @GetMapping("/transfer")
     @ApiOperation("transfer-令牌转移")
